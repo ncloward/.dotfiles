@@ -34,23 +34,29 @@ export KEYTIMEOUT=1
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/ncloward/.rbenv/shims:/usr/local/heroku/bin:$PATH"
 source $HOME/.zshenv
 
-# Canvas-lms specific helpers
-source $HOME/.canvas
-
-# Bundle specific alias
-alias be="bundle exec"
-alias ss="bundle exec rails server"
-alias sc="bundle exec rails console"
-alias bi="bundle check || bundle install || bundle update"
-alias rs="bundle exec rspec"
-
-alias kill_rails="kill -3 $(lsof -i tcp:3000 -t)"
-alias guard="bundle exec guard start"
 alias v="vagrant"
+
+alias ve='source ve/bin/activate'
+alias gw='gulp watch'
+
 alias mp3="youtube-dl -x --audio-format mp3  -o \"%(title)s.%(ext)s\" --restrict-filenames"
+
+clear_python_cache() {
+  rm **/*.pyc
+  rm -rf __pycache__
+}
 
 # Every once in a while I use this to record DJ sets for later listening.
 rip_radio_danz() {
   cd ~/Music/streamripper
   streamripper http://server1.radiodanz.com:8020 -q -u FreeAmp/2.x
 }
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/groovy/libexec:$PATH"
+export PATH="/Applications/Authentise.app/Contents/Resources:$PATH"
+
+# Disable globbing for pip
+alias pip="noglob pip"

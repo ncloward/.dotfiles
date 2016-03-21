@@ -11,6 +11,8 @@ Plugin 'gmarik/Vundle.vim'
 
 " Define bundles via Github repos
 Plugin 'godlygeek/csapprox'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 Plugin 'morhetz/gruvbox'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
@@ -23,10 +25,9 @@ Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'chrisbra/NrrwRgn'
 "Plugin 'lokaltog/vim-easymotion'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'thoughtbot/vim-rspec'
+"Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'jgdavey/tslime.vim'
-Plugin 'kchmck/vim-coffee-script'
+Plugin 'sirtaj/vim-openscad'
 
 call vundle#end()
 

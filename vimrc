@@ -32,6 +32,13 @@ runtime! macros/matchit.vim
 
 " Set ejs to render as html
 au BufNewFile,BufRead *.ejs set filetype=html
+au BufNewFile,BufRead *.jinja2 set filetype=html
+
+" Set less to render as css
+au BufNewFile,BufRead *.less set filetype=css
+
+" Set sls to render as yaml
+au BufNewFile,BufRead *.sls set filetype=yaml
 
 " Move up/down editor lines
 nnoremap j gj
@@ -141,7 +148,16 @@ set noswapfile
 set history=1000         " remember more commands and search history
 set undolevels=1000      " use many muchos levels of undo
 
+highlight Comment cterm=italic
+
 " tell it to use an undo file
 set undofile
 " set a directory to store the undo history
 set undodir=/Users/ncloward/.vimundo/
+
+"autocmd Filetype html setlocal ts=2 sw=2 expandtab
+"autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
+"autocmd Filetype python setlocal ts=4 sw=4 expandtab
+"autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 noexpandtab
+
+let g:jsx_ext_required = 0

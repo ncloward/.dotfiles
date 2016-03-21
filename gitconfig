@@ -1,10 +1,11 @@
 [user]
 	name = Nick Cloward
-	email = ncloward@instructure.com
+	email = nick@authentise.com
 
 [core]
-	excludesfile = /Users/ncloward/.gitignore
+	excludesfile = ~/.gitignore
 	editor = /usr/bin/vim
+	autocrlf = input
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
