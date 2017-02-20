@@ -7,7 +7,7 @@ plugins=(gitfast brew bundle gem vagrant)
 source $ZSH/oh-my-zsh.sh
 
 # Fix for gruvbox theme
-~/.vim/bundle/gruvbox/gruvbox_256palette_osx.sh
+# ~/.vim/bundle/gruvbox/gruvbox_256palette_osx.sh
 
 # Vim mode for zsh
 bindkey -v
@@ -34,12 +34,17 @@ export KEYTIMEOUT=1
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/ncloward/.rbenv/shims:/usr/local/heroku/bin:$PATH"
 source $HOME/.zshenv
 
-alias v="vagrant"
-
+alias dc="docker-compose"
+alias va="vagrant"
+alias v='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
+alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
+alias nvim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 alias ve='source ve/bin/activate'
+alias de='deactivate'
 alias gw='gulp watch'
+alias gf='git fetch && git pull --rebase origin master'
 
-alias mp3="youtube-dl -x --audio-format mp3  -o \"%(title)s.%(ext)s\" --restrict-filenames"
+alias rm='rmtrash'
 
 clear_python_cache() {
   rm **/*.pyc
@@ -60,3 +65,8 @@ export PATH="/Applications/Authentise.app/Contents/Resources:$PATH"
 
 # Disable globbing for pip
 alias pip="noglob pip"
+
+# Run DNVM for .net dev
+source dnvm.sh
+
+if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi

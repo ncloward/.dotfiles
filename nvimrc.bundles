@@ -1,0 +1,25 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-sensible'
+Plug 'itchyny/lightline.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'morhetz/gruvbox'
+Plug 'scrooloose/nerdcommenter'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'sirtaj/vim-openscad'
+Plug 'junegunn/vim-easy-align'
+
+" Plug 'chrisbra/NrrwRgn'
+" Plug 'godlygeek/csapprox'
+" Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/nerdtree'
+" Plug 'tpope/vim-unimpaired'
+" Plug 'lokaltog/vim-easymotion'
+" Plug 'christoomey/vim-tmux-navigator'
+" Plug 'jgdavey/tslime.vim'
+
+call plug#end()

@@ -1,7 +1,10 @@
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
 set nocompatible
 
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
+if filereadable(expand("~/.nvimrc.bundles"))
+  source ~/.nvimrc.bundles
 endif
 
 syntax on
@@ -33,11 +36,7 @@ runtime! macros/matchit.vim
 " Set ejs to render as html
 au BufNewFile,BufRead *.ejs set filetype=html
 au BufNewFile,BufRead *.jinja2 set filetype=html
-
-" Set less to render as css
 au BufNewFile,BufRead *.less set filetype=css
-
-" Set sls to render as yaml
 au BufNewFile,BufRead *.sls set filetype=yaml
 
 " Move up/down editor lines
@@ -49,13 +48,6 @@ set hidden
 
 " Rendering
 set ttyfast
-
-" Status bar
-set laststatus=2
-
-" Last line
-set showmode
-set showcmd
 
 " Searching
 nnoremap / /\v
@@ -70,40 +62,23 @@ map <leader><space> :let @/=''<cr> " clear search
 " Formatting
 map <leader>q gqip
 
-" Visualize tabs and newlines
-set listchars=tab:▸\ ,eol:¬
-" Uncomment this to enable by default:
-" set list " To enable by default
-" Or use your leader key + l to toggle on/off
-map <leader>l :set list!<CR> " Toggle tabs and EOL
-
 " Color scheme
-set t_Co=256
-syntax on
-if !has("gui_running")
-   let g:gruvbox_italic=0
-endif
+let g:gruvbox_italic=1
 colorscheme gruvbox
 set background=dark
 
-" Random shortcuts
-imap <C-l> =>
-imap jj <Esc>
+" imap jj <Esc>
 
 " clipboard Register
 set clipboard=unnamed
 
 " format the entire file
-nmap <leader>fef ggVG=
+noremap <leader>fef ggVG=
+noremap <leader>Pdb <S-o>import pytest; pytest.set_trace()<Esc>
+noremap <leader>pdb oimport pytest; pytest.set_trace()<Esc>
 
-" NERDTree
-nmap <leader>n :NERDTreeToggle<CR>
-let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg']
-
-" Syntastic
-let g:syntastic_mode_map = { 'mode': 'passive' }
-let g:syntastic_ruby_exec = '~/.rvm/rubies/ruby-2.0.0-p0/bin/ruby'
+" Lightline
+let g:lightline = { 'colorscheme': 'gruvbox' }
 
 " CtrlP
 let g:ctrlp_map = '<c-p>'
@@ -120,22 +95,6 @@ if executable("ag")
     \ -g ""'
 endif
 
-" Change cusor for insert mode and command mode.
-if exists('$TMUX')
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-endif
-
-" Unbind the cursor keys in insert, normal and visual modes.
-for prefix in ['i', 'n', 'v']
-  for key in ['<Up>', '<Down>', '<Left>', '<Right>']
-    exe prefix . "noremap " . key . " <Nop>"
-  endfor
-endfor
-
 " Remember Last position over sessions
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -148,16 +107,18 @@ set noswapfile
 set history=1000         " remember more commands and search history
 set undolevels=1000      " use many muchos levels of undo
 
-highlight Comment cterm=italic
-
 " tell it to use an undo file
 set undofile
 " set a directory to store the undo history
-set undodir=/Users/ncloward/.vimundo/
-
-"autocmd Filetype html setlocal ts=2 sw=2 expandtab
-"autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
-"autocmd Filetype python setlocal ts=4 sw=4 expandtab
-"autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 noexpandtab
+set undodir=~/.vimundo/
 
 let g:jsx_ext_required = 0
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" Format JSON with python
+command! FormatJSON %!python -m json.tool
